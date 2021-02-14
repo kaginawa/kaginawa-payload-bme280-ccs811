@@ -1,0 +1,14 @@
+[Unit]
+Descriptiuon=kaginawa
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/pi/kaginawa
+ExecStart=/home/pi/kaginawa/main.py
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
+
