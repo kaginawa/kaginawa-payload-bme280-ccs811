@@ -24,4 +24,3 @@ if __name__ == '__main__':
         except:
             print(sys.exc_info())
         time.sleep(60)
-
