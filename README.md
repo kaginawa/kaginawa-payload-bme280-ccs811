@@ -6,6 +6,7 @@
 
 Hardware:
 
+- SMBus-compatible Linux-based platform (e.g. Raspberry Pi)
 - BME280 with I2C slave address `0x76`
 - CCS811 with I2C slave address `0x5b`
 
@@ -26,16 +27,22 @@ After=network-online.target
 
 [Service]
 Type=simple
-WorkingDirectory=/home/pi/kaginawa
-ExecStart=/home/pi/kaginawa/main.py
+WorkingDirectory=/opt/kaginawa
+ExecStart=/opt/kaginawa/main.py
 Restart=always
-User=pi
+User=kaginawa
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-systemd registration:
+Modify `ExecStart` as follows according to your configuration:
+
+- BME280 + CCS811: `main.py`
+- BME280 only: `main-bme280-only.py`
+- CCS811 only: `main-ccs811-only.py`
+
+systemd's registration:
 
 ```
 sudo systemctl daemon-reload
@@ -56,9 +63,9 @@ sudo systemctl enable kaginawa-payload
 
 ## Credits
 
-`ccs811.py` is based on [adafruit/Adafruit_CCS811_python](https://github.com/adafruit/Adafruit_CCS811_python), licensed under the MIT License.
-
 `bme280.py` is based on [SWITCHSCIENCE/BME280](https://github.com/SWITCHSCIENCE/BME280), licensed under the MIT license.
+
+`ccs811.py` is based on [adafruit/Adafruit_CCS811_python](https://github.com/adafruit/Adafruit_CCS811_python), licensed under the MIT License.
 
 All programs are restyled with `pycodestyle`.
 
@@ -69,4 +76,3 @@ All programs are restyled with `pycodestyle`.
 ## Author
 
 [mikan](https://github.com/mikan)
-

@@ -4,10 +4,10 @@ After=network-online.target
 
 [Service]
 Type=simple
-WorkingDirectory=/home/pi/kaginawa
-ExecStart=/home/pi/kaginawa/main.py
+WorkingDirectory=/opt/kaginawa
+ExecStart=/opt/kaginawa/main.py
 Restart=always
-User=pi
+User=kaginawa
 
 [Install]
 WantedBy=multi-user.target
