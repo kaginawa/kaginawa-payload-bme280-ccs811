@@ -76,7 +76,7 @@ def compensate_p(adc_p):
         pressure = (pressure / v1) * 2
     v1 = (digP[8] * (((pressure / 8.0) * (pressure / 8.0)) / 8192.0)) / 4096
     v2 = ((pressure / 4.0) * digP[7]) / 8192.0
-    return pressure + ((v1 + v2 + digP[6]) / 16.0) / 100
+    return (pressure + ((v1 + v2 + digP[6]) / 16.0)) / 100
 
 
 def compensate_t(adc_t):
